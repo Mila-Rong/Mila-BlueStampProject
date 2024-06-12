@@ -84,7 +84,41 @@ Don't forget to place the link of where to buy each component inside the quotati
 
 # Starter Project
 For my starter project, I built a Arduino starter that has ability to detect whether there is an object in front and the distance from itself by using the LED. This happens by using a ultrasounic sensor. To measure the realtime distance, it will time the ultrasound emmited travel forth and back from the object. The ultrasound velocity is known as 340m/s, allow it to calculate the the distance(S = vt), and shown through serial monitor. To control the LED turn on when the object is near, Arduino IDE is utilized to add code and ensure the LED turn on when the distance is less than 6cm, off when the distance is greater than 6cm.
+# # Code
+// Include NewPing Library
+#include "NewPing.h"
 
+// Hook up HC-SR04 with Trig to Arduino Pin 9, Echo to Arduino pin 10
+#define TRIGGER_PIN 9
+#define ECHO_PIN 10
+// Maximum distance we want to ping for (in centimeters).
+#define MAX_DISTANCE 1000000	
+
+// NewPing setup of pins and maximum distance.
+NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
+
+void setup() {
+	Serial.begin(9600);//how fast it communicate
+  const int ledPin = 13;//the ledPin is always Pin7
+  pinMode(ledPin, OUTPUT);//the ledPin's job is always OUTPUT
+}
+
+void loop() {//Excute the order over and over again. Measure the distance between the ultranic senser ro the nearest object and determine whether to turn the LED on or not.
+  int d = sonar.ping_cm();
+  Serial.print("Distance = ");
+	Serial.print(d);
+	Serial.println(" cm");
+  if (d < 6) {
+    digitalWrite(13, 1);
+  }
+  if (d == 0){
+    digitalWrite(13, 0);
+  }
+  else if (d > 6){
+    digitalWrite(13, 0);
+  }
+  delay(100);
+}
 One of the best parts about Github is that you can view how other people set up their own work. Here are some past BSE portfolios that are awesome examples. You can view how they set up their portfolio, and you can view their index.md files to understand how they implemented different portfolio components.
 - [Example 1](https://trashytuber.github.io/YimingJiaBlueStamp/)
 - [Example 2](https://sviatil0.github.io/Sviatoslav_BSE/)
