@@ -1,4 +1,5 @@
 # Posture Corrector
+My project is aim to help users to correct sitting posture and keep cervical spine healthy. 
 Replace this text with a brief description (2-3 sentences) of your project. This description should draw the reader in and make them interested in what you've built. You can include what the biggest challenges, takeaways, and triumphs from completing the project were. As you complete your portfolio, remember your audience is less familiar than you are with all that your project entails!
 
 You should comment out all portions of your portfolio that you have not completed yet, as well as any instructions:
@@ -16,7 +17,7 @@ You should comment out all portions of your portfolio that you have not complete
 # Final Milestone
 # Second Milestone
 # First Milestone
-My first mile stone is to 
+My first mile stone is to complete the flex sensor connection, rogram the arduino with required code and make sure the flex sensor works. My first step is to connect 
 # Schematics 
 Here's where you'll put images of your schematics. [Tinkercad](https://www.tinkercad.com/blog/official-guide-to-tinkercad-circuits) and [Fritzing](https://fritzing.org/learning/) are both great resoruces to create professional schematic diagrams, though BSE recommends Tinkercad becuase it can be done easily and for free in the browser. 
 
