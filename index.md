@@ -16,7 +16,7 @@ HTML
 <!---# Final Milestone
 # Second Milestone-->
 # First Milestone
-My first mile stone is to complete the flex sensor connection, program the arduino with required code and make sure the flex sensor works. My first step is to make images of WS2812b led strip and flex sensor schematics. After solding wires and connecting, I programed code. First, I wrote a if sentence to realise the LED stripe realtimely turn red when the flex sencor bend over an expected critical value; Turn green sequentially when the flex sensor is less than expected value. With the help of Adafruit_NeoPixel library and a for loop, the computer can control color, brightness, LED amount and time to turn on of the LEDs.
+My first mile stone is to complete the flex sensor connection, program the arduino with required code and make sure the flex sensor works. My first step is to make images of WS2812b led strip and flex sensor schematics. After solding wires and connecting, I programed code. First, I wrote a if sentence to accomplish the LED stripe real time turn red when the flex sencor bend over an expected critical value; Turn green sequentially when the flex sensor is less than expected value. With the help of Adafruit_NeoPixel library and a for loop, the computer can control color, brightness, LED amount and time to turn on of the LEDs.
 <!---# Schematics 
 Here's where you'll put images of your schematics. [Tinkercad](https://www.tinkercad.com/blog/official-guide-to-tinkercad-circuits) and [Fritzing](https://fritzing.org/learning/) are both great resoruces to create professional schematic diagrams, though BSE recommends Tinkercad becuase it can be done easily and for free in the browser. -->
 
