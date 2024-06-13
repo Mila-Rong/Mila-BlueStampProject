@@ -16,6 +16,8 @@ HTML
 <!---# Final Milestone
 # Second Milestone-->
 # First Milestone
+[
+](https://youtu.be/qWUt8Wl382Y?feature=shared)
 My first mile stone is to complete the flex sensor connection, program the arduino with required code and make sure the flex sensor works. My first step is to make images of WS2812b led strip and flex sensor schematics. After solding wires and connecting, I programed code. First, I wrote a if sentence to accomplish the LED stripe real time turn red when the flex sencor bend over an expected critical value; Turn green sequentially when the flex sensor is less than expected value. With the help of Adafruit_NeoPixel library and a for loop, the computer can control color, brightness, LED amount and time to turn on of the LEDs.
 One challenge that I had for this milestone was the LED was always red when the value represents flex sensor bend degree is 0. It's because the else sentence isn't excuted. I didn’t get to know well the Adafruit_NeoPixel library dictionary, so I omissioned the show strip.show() that refresh the display for these changes to take effect.
 My next step is to connect the yoga ball to the arduino and let the flex sensor send a signal to the computer through Arduino to have a higher degree of completion.
