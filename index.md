@@ -19,8 +19,8 @@ HTML
 <iframe width="560" height="315" src="https://www.youtube.com/embed/qWUt8Wl382Y?si=09idMhwT-X0u8iI2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 My first mile stone is to complete the flex sensor connection, program the arduino with required code and make sure the flex sensor works. My first step is to make images of WS2812b led strip and flex sensor schematics. After solding wires and connecting, I programed code. First, I wrote a if sentence to accomplish the LED stripe real time turn red when the flex sencor bend over an expected critical value; Turn green sequentially when the flex sensor is less than expected value. With the help of Adafruit_NeoPixel library and a for loop, the computer can control color, brightness, LED amount and time to turn on of the LEDs.
-One challenge that I had for this milestone was the LED was always red when the value represents flex sensor bend degree is 0. It's because the else sentence isn't excuted. I didn’t get to know well the Adafruit_NeoPixel library dictionary, so I omissioned the show strip.show() that refresh the display for these changes to take effect.
-My next step is to connect the yoga ball to the arduino and let the flex sensor send a signal to the computer through Arduino to have a higher degree of completion.
+One challenge that I had for this milestone was the LED was always red when the value represents flex sensor bend degree is 0. It's because the else sentence isn't excuted. I didn’t get to know well the Adafruit_NeoPixel library dictionary, so I omissioned the strip.show() that refresh the display for these changes to take effect.
+My next step is to enable the project connection with a Android phone program to have a higher degree of completion.
 # Schematics 
 WS2812b LED Strip
 ![Shiny Bruticus](https://github.com/Mila-Rong/Mila-BlueStampProject/assets/172335758/806cf273-35f5-4d4e-9e75-c705c9f0e79d)
@@ -75,7 +75,8 @@ void loop() {
 # Starter Project: Arduino Starter
 <iframe width="560" height="315" src="https://www.youtube.com/embed/AmasHNNt3hI?si=7HS6WkTH1lH-Cv-b" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 For my starter project, I built a Arduino starter that has ability to detect whether there is an object in front and the distance from itself. This happens by using an ultrasounic sensor and LED. To measure the realtime distance, it will time the ultrasound emmited travel back and forth from the object. The ultrasound velocity is known as 340m/s, allow it to calculate the the distance(S = vt), and shown through serial monitor. To control the LED turn on when the object is near, Arduino IDE is utilized to add code and ensure the LED turn on when the distance is less than 6cm, off when the distance is greater than 6cm.
-The main challenge I met is that the LED is always on. What I did first is to change the digital write order from the critical distance mistakely written to ledpin serial number. Besides, I found the sencer measure the distance as 0 if an object is farther than it max distance, such as when there is nothing. Finally, I add code about not turn LED on when the distance is 0. However, this project allowed me to become comfortable using Arduino systems and related tools.[Headstone Image](Neat Kieran.png)
+The main challenge I met is that the LED is always on. What I did first is to change the digital write order from the critical distance mistakely written to ledpin serial number. Besides, I found the sencer measure the distance as 0 if an object is farther than it max distance, such as when there is nothing. Finally, I add code about not turn LED on when the distance is 0. However, this project allowed me to become comfortable using Arduino systems and related tools.
+[Headstone Image](Neat Kieran.png)
 ## Code
 ```
 // Include NewPing Library
