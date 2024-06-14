@@ -18,9 +18,6 @@ HTML
 
 [Headstone Image](BlueStampSelfImage.jpeg)
 
-(https://github.com/Mila-Rong/Mila-BlueStampProject/assets/172335758/15034bd9-d609-4934-9548-9146c88ba177)
-(https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.**
-  
 <!---# Final Milestone
 # Second Milestone-->
 # First Milestone
