@@ -76,8 +76,7 @@ void loop() {
 <iframe width="560" height="315" src="https://www.youtube.com/embed/AmasHNNt3hI?si=7HS6WkTH1lH-Cv-b" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 For my starter project, I built a Arduino starter that has ability to detect whether there is an object in front and the distance from itself. This happens by using an ultrasounic sensor and LED. To measure the realtime distance, it will time the ultrasound emmited travel back and forth from the object. The ultrasound velocity is known as 340m/s, allow it to calculate the the distance(S = vt), and shown through serial monitor. To control the LED turn on when the object is near, Arduino IDE is utilized to add code and ensure the LED turn on when the distance is less than 6cm, off when the distance is greater than 6cm.
 The main challenge I met is that the LED is always on. What I did first is to change the digital write order from the critical distance mistakely written to ledpin serial number. Besides, I found the sencer measure the distance as 0 if an object is farther than it max distance, such as when there is nothing. Finally, I add code about not turn LED on when the distance is 0. However, this project allowed me to become comfortable using Arduino systems and related tools.
-![image](https://github.com/Mila-Rong/Mila-BlueStampProject/assets/172335758/144d96e0-cfbb-4136-87d0-73c4cf6d1d55)
-
+![image](https://github.com/Mila-Rong/Mila-BlueStampProject/assets/172335758/8546b211-d242-43c7-a961-dd2166006d7d)
 ## Code
 ```
 // Include NewPing Library
