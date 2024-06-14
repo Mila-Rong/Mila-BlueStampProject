@@ -9,7 +9,7 @@ These experiences have significantly enhanced my problem-solving skills.
 |:--:|:--:|:--:|:--:|
 | Mila R. | Saratoga High School | Engineering | Incoming Sophomore
 
-[Headstone Image](BlueStampSelfImage.jpeg)
+[!Headstone Image](BlueStampSelfImage.jpeg)
 
 <!---# Final Milestone
 # Second Milestone-->
