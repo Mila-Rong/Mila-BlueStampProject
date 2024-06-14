@@ -42,8 +42,7 @@ void loop() {
   // put your main code here, to run repeatedly:
 
 }
-```
--->
+```-->
 # Bill of Materials
 
 | **Part** | **Note** | **Price** | **Link** |
