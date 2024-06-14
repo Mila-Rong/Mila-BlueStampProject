@@ -16,7 +16,7 @@ HTML
 |:--:|:--:|:--:|:--:|
 | Mila R. | Saratoga High School | Engineering | Incoming Sophomore
 
-[Headstone Image](BlueStampSelfImage.png)
+[Headstone Image](BlueStampSelfImage.jpeg)
 
 (https://github.com/Mila-Rong/Mila-BlueStampProject/assets/172335758/15034bd9-d609-4934-9548-9146c88ba177)
 (https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.**
@@ -35,7 +35,7 @@ WS2812b LED Strip
 Flex sensor
 ![image](https://github.com/Mila-Rong/Mila-BlueStampProject/assets/172335758/84bef1d8-1d6a-4011-be44-0f94c5fc4af5)
 Here's where you'll put images of your schematics. [Tinkercad](https://www.tinkercad.com/blog/official-guide-to-tinkercad-circuits) and [Fritzing](https://fritzing.org/learning/) are both great resoruces to create professional schematic diagrams, though BSE recommends Tinkercad becuase it can be done easily and for free in the browser.
-# Code
+<!---# Code
 Here's where you'll put your code. The syntax below places it into a block of code. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize it to your project needs. 
 
 ```c++
@@ -50,7 +50,7 @@ void loop() {
 
 }
 ```
-
+-->
 # Bill of Materials
 
 | **Part** | **Note** | **Price** | **Link** |
