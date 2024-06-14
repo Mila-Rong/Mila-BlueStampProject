@@ -1,5 +1,10 @@
 # Posture Corrector
-My project is aim to help users to correct sitting posture and keep cervical spine healthy. 
+Ever wondered how mastering good posture can transform your confidence and presence? Cleveland clinic states that standing and sitting up straight can boost confidence and reduced risk of injury. 
+My project is aim to help people to correct sitting posture and remind them anytime.
+What sets this project apart is the incorporation of numerous innovative features.
+At first I...
+These experiences have significantly enhanced my problem-solving skills.
+
 Replace this text with a brief description (2-3 sentences) of your project. This description should draw the reader in and make them interested in what you've built. You can include what the biggest challenges, takeaways, and triumphs from completing the project were. As you complete your portfolio, remember your audience is less familiar than you are with all that your project entails!
 
 You should comment out all portions of your portfolio that you have not completed yet, as well as any instructions:
