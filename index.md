@@ -74,39 +74,115 @@ The main challenge I met is that the LED is always on. What I did first is to ch
 ![image](https://github.com/Mila-Rong/Mila-BlueStampProject/assets/172335758/8546b211-d242-43c7-a961-dd2166006d7d)
 ## Code
 ```
-// Include NewPing Library
-#include "NewPing.h"
+#include <SoftwareSerial.h>
+#include <FastLED.h>
+#include <Adafruit_NeoPixel.h>
+#include <avr/wdt.h>
+// Pin Definitions
+const int ledPin = 13;   // Built-in LED on Arduino board
+const int flexPin = A0;  // Pin A0 to read analog input
+#define LED_PIN 6        // Pin to use to send signals to WS2812B
+#define LED_COUNT 12     // Number of WS2812B LEDs attached to the Arduino
 
-// Hook up HC-SR04 with Trig to Arduino Pin 9, Echo to Arduino pin 10
-#define TRIGGER_PIN 9
-#define ECHO_PIN 10
-// Maximum distance we want to ping for (in centimeters).
-#define MAX_DISTANCE 1000000	
+// Variables
+int command;
+int flexValue;
+int baseValue = 0;
+int sent = -1;
+int time = 0;
+String prevSend = "";
 
-// NewPing setup of pins and maximum distance.
-NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
+// Setting up the NeoPixel library
+Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
 
 void setup() {
-	Serial.begin(9600);//how fast it communicate
-  const int ledPin = 13;//the ledPin is always Pin7
-  pinMode(ledPin, OUTPUT);//the ledPin's job is always OUTPUT
+  // Initialization
+  pinMode(flexPin, INPUT);
+  pinMode(ledPin, OUTPUT);
+  digitalWrite(ledPin, LOW);
+
+  Serial.begin(9600);  // Initialize Serial communication
+
+  delay(500);  // Power-up safety delay
+
+  strip.begin();            // Initialize NeoPixel object
+  strip.setBrightness(10);  // Set BRIGHTNESS to about 4% (max = 255)
+  strip.show();
 }
 
-void loop() {//Excute the order over and over again. Measure the distance between the ultranic senser ro the nearest object and determine whether to turn the LED on or not.
-  int d = sonar.ping_cm();
-  Serial.print("Distance = ");
-	Serial.print(d);
-	Serial.println(" cm");
-  if (d < 6) {
-    digitalWrite(13, 1);
+void loop() {
+  // Visual indicator that the board is transmitting
+
+  flexValue = analogRead(flexPin);
+  // Serial.println(flexValue);
+  // Get the flex value from flex sensor
+
+  if (Serial.available() > 0) {
+    command = Serial.read();
+    Serial.println(command);
+  }  // check if the serial is working and get the command value
+
+  if (true) {
+    // this is the first if part, it divides the flex value is greater than 15(bad posture) and is less than 15(good posture). The following is explaining the bad posture condition.
+    // If flexValue is greater than 15, the red light turn on, then determine if the command value is 1
+    // if is, which means the function is opened by the user, so it will send a "send"value(5)(good posture is 6) to the MIT APP inventor, so that the inventor can print "bad posture!" on the APP screen.
+   
+    if (flexValue > baseValue + 15) {  // IF YOU HAVE BAD POSTURE
+      // Set all pixel colors to red
+      for (int i = 0; i < LED_COUNT; i++) {
+        strip.setPixelColor(i, 255, 0, 0);
+      }
+      strip.show();  // Send the updated pixel colors to the hardware
+      if (command == 1) { //if function is on
+        if (prevSend == "bad posture!"){ //if we said bad posture last loop
+        } //do nothing
+        else { // if we DIDN'T say bad posture last time...
+          Serial.print(5); //say bad posture
+          Serial.flush();
+          prevSend = "bad posture!"; //say that we just said bad posture
+        }
+      }
+    } else {  // If the user have good posture.
+      // Set all pixel colors to green
+      for (int i = 0; i < LED_COUNT; i++) {
+        strip.setPixelColor(i, 0, 255, 0);
+      }
+      strip.show();        // Send the updated pixel colors to the hardware
+      if (command == 1) {  // If the function is on.
+        if (prevSend == "Good posture."){ //if we said bad posture last loop
+        } //do nothing
+        else { // if we DIDN'T say bad posture last time...
+          Serial.print(6); //say bad posture
+          Serial.flush();
+          prevSend = "Good posture."; //say that we just said bad posture
+      }
+    }
+
   }
-  if (d == 0){
-    digitalWrite(13, 0);
+  //The following is the second part, when the user click the "refresh" button, the Arduino will print "Refreshing..." and refresh.
+
+  if (command == 3) {  // Command to send "Refreshing..."
+        if (prevSend == "Resetting..."){ //if we said bad posture last loop
+        } //do nothing
+        else { // if we DIDN'T say bad posture last time...
+          Serial.print(7); //say bad posture
+          prevSend = "Resetting..."; //say that we just said bad posture
+          delay(1000);
+          command == 0;
+      }
+    wdt_enable(WDTO_15MS);  // Enable the watchdog timer with a 15ms timeout
+    while (true) {}         // Wait  for the watchdog to reset the Arduino
+
+    // Optional: Blink the built-in LED to show the Arduino is running
+    digitalWrite(LED_BUILTIN, HIGH);
+    delay(500);
+    digitalWrite(LED_BUILTIN, LOW);
+    delay(500);
+
+    // The following is the last part. When command is 2, which means the user clicked the "OFF" button, so the remind function is closed.
+    // It will make the APP print"Disable this feature." instead of printing good or bad posture.                     
   }
-  else if (d > 6){
-    digitalWrite(13, 0);
   }
-  delay(100);
 }
 ```
 <!---# Other Sources/Examples
