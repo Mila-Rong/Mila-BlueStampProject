@@ -13,12 +13,21 @@ These experiences have significantly enhanced my problem-solving skills.
      width="400" 
      height="500" />
 
-<!---# Final Milestone
-# Second Milestone-->
+<!---# Final Milestone-->
+# Second Milestone
+<iframe width="560" height="315" src="https://www.youtube.com/embed/D_C1XX4vULE?si=S7-5pDSRuzCl-kvY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+My second Milestone was to invent a APP called AlignMe so that the user can conviniently be reminded on phone. In my project, the user sit with a flex sensor in the back of the wearable device. Then, they press the ON button to allow the function and press the RESET button to reset the Arduino code and turn off the reminder. 
+
+In order to send the user notifications on a phone, I first create an app on MIT app inventor which connected to my arduino via a bluetooth module. The bluetooth module sends data from the arduino to the app wirelessly. In order for the app to update in real time, I add clock timer through editting blocks on the MIT APP inventor. Every 0.1 sec, the Android phone communicates with the bluetooth module, which are sending variable "global command" and recieving a one byte variable "Global Recieve_byte". The global command will turn to number 1 when the user press ON button and turn to 3 when press RESET button. After Arduino recieve the global command in a speed of 9600 baud, it can determine whether to Serial.print a number back or reset the Arduino based on this. If reminder function is on, the flex value is greater(less) than 15, the Arduino will send 5(6) to the Android phone and it will print out "Bad posture!"("Good posture.") on the screen.
+
+One challenge that I had for this milestone was the coding part. 
+I used the Serial.write and Serial.flush wrongly at first because I wasn't clear with how the difference between print and write is that serial.print sends characters while serial.write only sends binary. After changed to Serial.print, I found the APP can't recieve the Recieve_byte. What is helpful I did is that I utilize the Ascii code to transfer number, which is an encoding standard used to represent text in computers. Last, I overcame the challenge of how to avoid printing many lines of remind text by adding a global variable blocks that can recieve redundant text at the end of loop.
 # First Milestone
 <iframe width="560" height="315" src="https://www.youtube.com/embed/qWUt8Wl382Y?si=09idMhwT-X0u8iI2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-My first mile stone is to complete the flex sensor connection, program the arduino with required code and make sure the flex sensor works. My first step is to make images of WS2812b led strip and flex sensor schematics. After solding wires and connecting, I programed code. First, I wrote a if sentence to accomplish the LED stripe real time turn red when the flex sencor bend over an expected critical value; Turn green sequentially when the flex sensor is less than expected value. With the help of Adafruit_NeoPixel library and a for loop, the computer can control color, brightness, LED amount and time to turn on of the LEDs.
+My first mile stone is to complete the flex sensor connection, program the arduino with required code and make sure the flex sensor works. My first step is to make images of WS2812b led strip and flex sensor schematics. The pressure that the flex sensor senses is then set as the baseline pressure for the user. If they lean back and slouch into a bad sitting posture, an LED stripe will be trigged. 
+After solding wires and connecting, I programed code. 
+First, I wrote a if sentence to accomplish the LED stripe real time turn red when the flex sencor bend over an expected critical value; Turn green sequentially when the flex sensor is less than expected value. With the help of Adafruit_NeoPixel library and a for loop, the computer can control color, brightness, LED amount and time to turn on of the LEDs.
 One challenge that I had for this milestone was the LED was always red when the value represents flex sensor bend degree is 0. It's because the else sentence isn't excuted. I didn’t get to know well the Adafruit_NeoPixel library dictionary, so I omissioned the strip.show() that refresh the display for these changes to take effect.
 My next step is to enable the project connection with a Android phone program to have a higher degree of completion.
 # Schematics 
