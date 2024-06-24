@@ -35,8 +35,6 @@ Flex sensor
 ![image](https://github.com/Mila-Rong/Mila-BlueStampProject/assets/172335758/84bef1d8-1d6a-4011-be44-0f94c5fc4af5)
 HC-05 Bluetooth Module
 ![image](https://github.com/Mila-Rong/Mila-BlueStampProject/assets/172335758/e96564fb-47a7-494d-af32-2cab030b6e3c)
-MG90S Micro Servo
-![image](https://github.com/Mila-Rong/Mila-BlueStampProject/assets/172335758/0134223c-f1e4-4734-9e75-8739458274f4)
 
 # Bill of Materials
 
