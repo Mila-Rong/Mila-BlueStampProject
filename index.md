@@ -13,7 +13,9 @@ These experiences have significantly enhanced my problem-solving skills.
      width="400" 
      height="500" />
 
-<!---# Final Milestone-->
+# Final Milestone
+<iframe width="560" height="315" src="https://www.youtube.com/embed/GOSmVSnR1x4?si=L0vsJwBKRm38Qdbn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+My final milestone was to connect the previous project to a vest and add two servos to physically correct posture. 
 # Second Milestone
 <iframe width="560" height="315" src="https://www.youtube.com/embed/D_C1XX4vULE?si=S7-5pDSRuzCl-kvY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 My second Milestone was to invent an app called AlignMe so that the user can conveniently be reminded on the phone. In my project, the user sits with a flex sensor in the back of the wearable device. Then, they press the ON button to allow the function and press the RESET button to reset the Arduino code and turn off the reminder.
