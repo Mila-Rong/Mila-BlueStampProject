@@ -1,6 +1,6 @@
 # Posture Corrector
-Ever wondered how mastering good posture can transform your confidence and presence? Cleveland clinic states that standing and sitting up straight can boost confidence and reduced risk of injury. 
-And my project is aim to help people to correct sitting posture and remind them anytime.
+Ever wondered if mastering good posture can transform your confidence and presence? Experts state that sitting up straight can boost confidence and reduced risk of injury. 
+This project is aim to help people to correct sitting posture and remind them anytime.
 What sets this project apart is the incorporation of numerous innovative features.
 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
