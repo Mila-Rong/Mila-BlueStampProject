@@ -15,7 +15,10 @@ These experiences have significantly enhanced my problem-solving skills.
 
 # Final Milestone
 <iframe width="560" height="315" src="https://www.youtube.com/embed/GOSmVSnR1x4?si=L0vsJwBKRm38Qdbn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-My final milestone was to connect the previous project to a vest and add two servos to physically correct posture. 
+My final milestone was to connect the previous project to a vest and add two servos to physically correct posture. To connect the flex sensor and the LED stripe to the vest, I used tape, extended the wires from Arduino and then put two sides of LED stripe to the vest's pockets. 
+In order to make a servo system, I program to let the servo rotate 180 degrees. On hardware, I fix the two servos by using the non-elastic belt with the rotation direction facing outward as well as rotate from top to bottom. One end is connected to the half of fan blades, and the other end is sewn under the shoulders. One end of the other belt is connected to the servo body with Velcro, and the other end is connected to the thigh wearable device. 
+One challenge taht I had for this milestone was the servo part. At first, I tried to use elastic belt and connect two servos directly to waist of the vest, which won't have any force. By getting to know a existing product from a instructor, I learnt the working principle and fix servos to the legs to pull the shoulders by using non-elastic belt. One thing that I would do to improve my project is to improve the long distance cable stability and turn the soldered Arduino into a portable device. If I have more time, I also plan to add buzzers on my shoulder to achieve better prompt effect.
+
 # Second Milestone
 <iframe width="560" height="315" src="https://www.youtube.com/embed/D_C1XX4vULE?si=S7-5pDSRuzCl-kvY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 My second Milestone was to invent an app called AlignMe so that the user can conveniently be reminded on the phone. In my project, the user sits with a flex sensor in the back of the wearable device. Then, they press the ON button to allow the function and press the RESET button to reset the Arduino code and turn off the reminder.
@@ -78,110 +81,119 @@ The main challenge I met is that the LED is always on. What I did first is to ch
 #include <FastLED.h>
 #include <Adafruit_NeoPixel.h>
 #include <avr/wdt.h>
-// Pin Definitions
+const byte rxPin = 2;
+const byte txPin = 3;
+SoftwareSerial BTSerial(rxPin, txPin);
 const int ledPin = 13;   // Built-in LED on Arduino board
 const int flexPin = A0;  // Pin A0 to read analog input
 #define LED_PIN 6        // Pin to use to send signals to WS2812B
-#define LED_COUNT 12     // Number of WS2812B LEDs attached to the Arduino
-
+#define LED_COUNT 60     // Include the Servo library
+#include <Servo.h>
+// Declare the Servo pin
+int servoPin1 = 9;
+int servoPin2 = 10;
+// Create a servo object
+Servo Servo1;
+Servo Servo2;
 // Variables
-int command;
+int command = 1;
 int flexValue;
 int baseValue = 0;
-int sent = -1;
-int time = 0;
+byte sent = -1;
+byte time = 0;
 String prevSend = "";
 
 // Setting up the NeoPixel library
 Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
 
+
 void setup() {
+
+
   // Initialization
   pinMode(flexPin, INPUT);
   pinMode(ledPin, OUTPUT);
   digitalWrite(ledPin, LOW);
 
   Serial.begin(9600);  // Initialize Serial communication
-
+  BTSerial.begin(9600);
   delay(500);  // Power-up safety delay
 
   strip.begin();            // Initialize NeoPixel object
   strip.setBrightness(10);  // Set BRIGHTNESS to about 4% (max = 255)
   strip.show();
+  Servo1.attach(9);
+  Servo2.attach(10);
 }
 
 void loop() {
   // Visual indicator that the board is transmitting
 
   flexValue = analogRead(flexPin);
+  Serial.print(flexValue);
+  // delay(1000);
+  // Serial.println(flexValue);
   // Serial.println(flexValue);
   // Get the flex value from flex sensor
 
-  if (Serial.available() > 0) {
-    command = Serial.read();
-    Serial.println(command);
-  }  // check if the serial is working and get the command value
 
-  if (true) {
-    // this is the first if part, it divides the flex value is greater than 15(bad posture) and is less than 15(good posture). The following is explaining the bad posture condition.
-    // If flexValue is greater than 15, the red light turn on, then determine if the command value is 1
-    // if is, which means the function is opened by the user, so it will send a "send"value(5)(good posture is 6) to the MIT APP inventor, so that the inventor can print "bad posture!" on the APP screen.
-   
-    if (flexValue > baseValue + 15) {  // IF YOU HAVE BAD POSTURE
-      // Set all pixel colors to red
-      for (int i = 0; i < LED_COUNT; i++) {
-        strip.setPixelColor(i, 255, 0, 0);
-      }
-      strip.show();  // Send the updated pixel colors to the hardware
-      if (command == 1) { //if function is on
-        if (prevSend == "bad posture!"){ //if we said bad posture last loop
-        } //do nothing
-        else { // if we DIDN'T say bad posture last time...
-          Serial.print(5); //say bad posture
-          Serial.flush();
-          prevSend = "bad posture!"; //say that we just said bad posture
-        }
-      }
-    } else {  // If the user have good posture.
-      // Set all pixel colors to green
-      for (int i = 0; i < LED_COUNT; i++) {
-        strip.setPixelColor(i, 0, 255, 0);
-      }
-      strip.show();        // Send the updated pixel colors to the hardware
-      if (command == 1) {  // If the function is on.
-        if (prevSend == "Good posture."){ //if we said bad posture last loop
-        } //do nothing
-        else { // if we DIDN'T say bad posture last time...
-          Serial.print(6); //say bad posture
-          Serial.flush();
-          prevSend = "Good posture."; //say that we just said bad posture
-      }
+  if (BTSerial.available()) {
+    int l_command = BTSerial.read();
+    Serial.print(l_command);
+    if (l_command == 3) {  // Command to send "Refreshing..."
+                           // if (prevSend == "Resetting...") {  //if we said bad posture last loop
+                           // }                                  //do nothing
+                           // else {                             // if we DIDN'T say bad posture last time...
+                           // Enable the watchdog timer with a 15ms timeout
+      // while (true) {}         // Wait  for the watchdog to reset the Arduino
+      BTSerial.write(byte(2));
+      BTSerial.flush();
+      prevSend = "Resetting...";  //say that we just said bad posture
+      delay(1000);
+      wdt_enable(WDTO_15MS);
+    }
+  }
+  delay(1000);
+  // return;
+
+  if (flexValue > baseValue + 7) {  // IF YOU HAVE BAD TURE
+    Servo1.write(90);
+    Servo2.write(180);
+    for (int i = 0; i < LED_COUNT; i++) {
+      strip.setPixelColor(i, 255, 0, 0);
+    }
+    strip.show();        // Send the updated pixel colors to the hardware
+    if (command == 1) {  //if function is on
+                         // if (prevSend == "bad posture!") {  //if we said bad posture last loop
+                         // }                                  //do nothing
+                         // else {                             // if we DIDN'T say bad posture last time...
+
+      BTSerial.write(byte(6));
+      BTSerial.flush();
+      delay(1000);
+      prevSend = "bad posture!";  //say that we just said bad posture
+      // }
+    }
+  } else {  // If the user have good posture.
+            // Set all pixel colors to green
+    Servo1.write(-90);
+    Servo2.write(0);
+    for (int i = 0; i < LED_COUNT; i++) {
+      strip.setPixelColor(i, 0, 255, 0);
+    }
+    strip.show();        // Send the updated pixel colors to the hardware
+    if (command == 1) {  // If the function is on.
+                         //   if (prevSend == "Good posture.") {  //if we said bad posture last loop
+                         //   }                                   //do nothing
+                         //   else {                              // if we DIDN'T say bad posture last time...
+      BTSerial.write(byte(5));
+      BTSerial.flush();
+      delay(1000);
+      prevSend = "Good posture.";  //say that we just said bad posture
+      // }
     }
 
-  }
-  //The following is the second part, when the user click the "refresh" button, the Arduino will print "Refreshing..." and refresh.
-
-  if (command == 3) {  // Command to send "Refreshing..."
-        if (prevSend == "Resetting..."){ //if we said bad posture last loop
-        } //do nothing
-        else { // if we DIDN'T say bad posture last time...
-          Serial.print(7); //say bad posture
-          prevSend = "Resetting..."; //say that we just said bad posture
-          delay(1000);
-          command == 0;
-      }
-    wdt_enable(WDTO_15MS);  // Enable the watchdog timer with a 15ms timeout
-    while (true) {}         // Wait  for the watchdog to reset the Arduino
-
-    // Optional: Blink the built-in LED to show the Arduino is running
-    digitalWrite(LED_BUILTIN, HIGH);
-    delay(500);
-    digitalWrite(LED_BUILTIN, LOW);
-    delay(500);
-
-    // The following is the last part. When command is 2, which means the user clicked the "OFF" button, so the remind function is closed.
-    // It will make the APP print"Disable this feature." instead of printing good or bad posture.                     
-  }
+    //The following is the second part, when the user click the "refresh" button, the Arduino will print "Refreshing..." and refresh.
   }
 }
 ```
