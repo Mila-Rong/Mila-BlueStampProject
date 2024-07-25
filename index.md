@@ -1,9 +1,7 @@
 # Posture Corrector
 Ever wondered how mastering good posture can transform your confidence and presence? Cleveland clinic states that standing and sitting up straight can boost confidence and reduced risk of injury. 
-My project is aim to help people to correct sitting posture and remind them anytime.
+And my project is aim to help people to correct sitting posture and remind them anytime.
 What sets this project apart is the incorporation of numerous innovative features.
-At first I...
-These experiences have significantly enhanced my problem-solving skills.
 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
@@ -15,9 +13,7 @@ These experiences have significantly enhanced my problem-solving skills.
 
 # Final Milestone
 <iframe width="560" height="315" src="https://www.youtube.com/embed/GOSmVSnR1x4?si=L0vsJwBKRm38Qdbn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-My final milestone was to connect the previous project to a vest and add two servos to physically correct posture. To connect the flex sensor and the LED stripe to the vest, I used tape, extended the wires from Arduino and then put two sides of LED stripe to the vest's pockets. 
-In order to make a servo system, I program to let the servo rotate 180 degrees. On hardware, I fix the two servos by using the non-elastic belt with the rotation direction facing outward as well as rotate from top to bottom. One end is connected to the half of fan blades, and the other end is sewn under the shoulders. One end of the other belt is connected to the servo body with Velcro, and the other end is connected to the thigh wearable device. 
-The challenge taht I had for this milestone was the servo part. At first, I tried to use elastic belt and connect two servos directly to waist of the vest, which won't have any force. By getting to know a existing product from a instructor, I learnt the working principle and fix servos to the legs to pull the shoulders by using non-elastic belt. One thing that I would do to improve my project is to improve the long distance cable stability and turn the soldered Arduino into a portable device. If I have more time, I also plan to add buzzers on my shoulder to achieve better prompt effect.
+My final milestone was to connect the previous project to a vest and add two servos to physically correct posture. To connect the flex sensor and the LED stripe to the vest, I used tape, extended the wires from the Arduino and then put two sides of LED stripe to the vest’s pockets. In order to make a servo system, I program to let the servo rotate 180 degrees. On hardware, I fix the two servos by using the non-elastic belt with the rotation direction facing outward as well as rotating from top to bottom. One end is connected to the half of the fan blades, and the other end is sewn under the shoulders. One end of the other belt is connected to the servo body with Velcro, and the other end is connected to the thigh wearable device. The challenge that I had for this milestone was the servo part. At first, I tried to use an elastic belt and connect two servos directly to the waist of the vest, which won’t have any force. By getting to know an existing product from an instructor, I learnt the working principle and fixed servos to the legs to pull the shoulders by using a non-elastic belt. One thing that I would do to improve my project is to improve the long distance cable stability and turn the soldered Arduino into a portable device. If I have more time, I also plan to add buzzers on my shoulder to achieve a better prompt effect.
 
 # Second Milestone
 <iframe width="560" height="315" src="https://www.youtube.com/embed/D_C1XX4vULE?si=S7-5pDSRuzCl-kvY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
